@@ -32,7 +32,7 @@ bot.on('message', (message) => {
 				description: reason
 			}
 		});
-	} else if (mention && afk.has(mention.id)) {
+	} else if (mention && afk.has(mention.id) && author.id != mention.id) {
 		message.reply(`${mention} is Busy right now.`, {
 			embed: {
 				color: 16773120,
