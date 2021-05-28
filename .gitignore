@@ -1,0 +1,6 @@
+node_modules
+yarn.lock
+package-lock.json
+
+# Do not let everyone see your secret file
+.env

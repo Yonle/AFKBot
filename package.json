@@ -1,0 +1,29 @@
+{
+  "name": "afkbot",
+  "version": "0.0.0",
+  "description": "A well, Very simple AFK bot for discord that written in NodeJS with Discord.js Library",
+  "main": "index.js",
+  "author": "Yonle",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.x"
+  },
+  "optionalDependencies": {
+    "dotenv": "latest"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yonle/AFKBot.git"
+  },
+  "keywords": [
+    "afk",
+    "afkbot"
+  ],
+  "bugs": {
+    "url": "https://github.com/Yonle/AFKBot/issues"
+  },
+  "homepage": "https://github.com/Yonle/AFKBot#readme"
+}
