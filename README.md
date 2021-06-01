@@ -29,6 +29,7 @@ node index.js
 # Or
 npm start
 ```
+To make `@mention, @mention is busy` does not gets `@invalid-user` response, Enable **Server Members Intend** in your discord OAUTH App. 
 
 ## Database Support
 This repo is using [`Map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map). To get a experience of full database support, Use [enmap](https://enmap.evie.dev/)

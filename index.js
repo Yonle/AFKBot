@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const afk = new Map();
+const guild = new Map();
 
 // We're gonna load dotenv, Yet
 try {
@@ -15,13 +15,21 @@ try {
 // Not including received message and etc :^)
 bot.on('debug', console.log);
 bot.on('message', (message) => {
+	// Ignore if it's DM
+	if (!message.guild) return;
 	let reason = message.content.split(' ').slice(1).join(' ');
 	let mention = message.mentions.users.first();
 	let author = message.author;
+	let afk = guild.get(message.guild.id);
+
+	if (typeof afk != "object") {
+		guild.set(message.guild.id, new Map());
+		afk = guild.get(message.guild.id);
+	}
 
 	if (author.id === bot.user.id || message.webhookID || message.channel.type != "text") return;
 	if (mention && mention.id == bot.user.id && !afk.has(author.id) && !reason) {
-		return message.channel.send(`Heyya. To set your status as AFK user, Mention me with the reason. Example: ${bot.user} Studying`).then(m => {
+		return message.channel.send(`Hey ${author}, To set your status as AFK user, Mention me with the reason. Example: ${bot.user} Studying`).then(m => {
 			setTimeout(() => m.delete().catch(() => {}), 1000 * 10);
 		});
 	} else if (mention && mention.id == bot.user.id && reason.length && !afk.has(author.id)) {
@@ -40,7 +48,7 @@ bot.on('message', (message) => {
 			}
 		});
 	} else if (afk.has(author.id)) {
-		return message.channel.send(`Welcome back, ${author}. I've been removed your AFK.`, {
+		return message.channel.send(`Welcome back, ${author}. I removed your AFK.`, {
 			embed: {
 				color: 1048575,
 				title: "Last AFK Reason:",
